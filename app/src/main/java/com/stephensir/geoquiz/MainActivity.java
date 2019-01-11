@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.d(TAG,"onCreate");
+        Log.d(TAG,"Updated");
 
         mYesButton = findViewById(R.id.yes_button);
         mYesButton.setOnClickListener(new View.OnClickListener() {
