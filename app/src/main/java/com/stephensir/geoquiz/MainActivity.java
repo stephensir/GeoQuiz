@@ -8,35 +8,27 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button mTrueButton;
-    private Button mFalseButton;
+    private Button mYesButton;
+    private Button mNoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTrueButton = findViewById(R.id.true_button);
-        mTrueButton.setOnClickListener(new View.OnClickListener() {
+        mYesButton = findViewById(R.id.yes_button);
+        mYesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // action here
-                Toast.makeText(MainActivity.this,
-                        R.string.correct_toast,
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, R.string.correct_toast,Toast.LENGTH_SHORT).show();
             }
         });
-
-        mFalseButton = findViewById(R.id.false_button);
-        mFalseButton.setOnClickListener(new View.OnClickListener() {
+        mNoButton = findViewById(R.id.no_button);
+        mNoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // action here
-                Toast.makeText(MainActivity.this,
-                        R.string.incorrect_toast,
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, R.string.incorrect_toast,Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }
