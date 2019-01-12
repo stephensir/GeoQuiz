@@ -14,12 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mNoButton;
     private String TAG = "GeoQuiz===>";
 
-    private Question[] mQuestionBank = new Question[] {
-            // Format
-            new Question(getResources().getString(R.string.question_text1), true),
-            new Question(getResources().getString(R.string.question_text2), true),
-            new Question(getResources().getString(R.string.question_text3), false),
-    };
+    private Question[] mQuestionBank;
     private TextView txtOutput;
     private int mCurrentIndex = 0;
 
@@ -30,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG,"onCreate");
         Log.d(TAG,"Updated");
+
+        // Instance Question
+        mQuestionBank = new Question[] {
+                // Format
+                new Question(getResources().getString(R.string.question_text1), true),
+                new Question(getResources().getString(R.string.question_text2), true),
+                new Question(getResources().getString(R.string.question_text3), false),
+        };
 
         txtOutput = findViewById(R.id.txtOutput);
 
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     } //onCreate()
+
+    // compare answer and display message by Toast
     private void checkAnswer(boolean _ans, boolean _user_ans){
         if (_ans == _user_ans){
             Toast.makeText(MainActivity.this, R.string.correct_toast,Toast.LENGTH_SHORT).show();
@@ -55,18 +60,18 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, R.string.incorrect_toast,Toast.LENGTH_SHORT).show();
         }
     }
+    // get previous question
     public void btn_previous_click(View v){
         // index reach 0
         if (mCurrentIndex==0){
             return;
         }
         mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
-        txtOutput = findViewById(R.id.txtOutput);
         txtOutput.setText(mQuestionBank[mCurrentIndex].getQuestion());
     }
+    // get next question
     public void btn_next_click(View v){
         mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-        txtOutput = findViewById(R.id.txtOutput);
         txtOutput.setText(mQuestionBank[mCurrentIndex].getQuestion());
     }
 
