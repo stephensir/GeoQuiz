@@ -52,6 +52,21 @@ public class MainActivity extends AppCompatActivity {
         });
     } //onCreate()
 
+    // Serialize State
+    @Override
+    protected void onSaveInstanceState(Bundle state) {
+        Log.d(TAG,"onSaveInstanceState");
+        super.onSaveInstanceState(state);
+        state.putSerializable("mCurrentIndex", mCurrentIndex);
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        Log.d(TAG,"onRestoreInstanceState");
+        super.onRestoreInstanceState(savedInstanceState);
+        mCurrentIndex = (int) savedInstanceState.getSerializable("mCurrentIndex");
+        txtOutput.setText(mQuestionBank[mCurrentIndex].getQuestion());
+    }
+
     // compare answer and display message by Toast
     private void checkAnswer(boolean _ans, boolean _user_ans){
         if (_ans == _user_ans){
@@ -102,6 +117,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"onDestory");
+        Log.d(TAG,"onDestroy");
     } //onDestory()
 }
